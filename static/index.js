@@ -43,13 +43,23 @@ $(document).ready(function () {
             cache: false,
             processData: false,
             async: true,
-            success: function (data) {
+                    success: function (data) {
                 // Get and display the result
                 $('.loader').hide();
                 $('#result').fadeIn(600);
                 $('#preview').fadeIn(600);
-                $('#result').text('Disease:  ' + data[0]);
-                $('#preview').text(data[1]);
+                // Animate the result text using typed.js
+                var typed = new Typed('#result', {
+                    strings: ['Disease:  ' + data[0]],
+                    typeSpeed: 50,
+                    showCursor: false
+                });
+                // Animate the preview text using typed.js
+                var typed2 = new Typed('#preview', {
+                    strings: [data[1]],
+                    typeSpeed: 50,
+                    showCursor: false
+                });
                 console.log('Success!');
             },
         });
